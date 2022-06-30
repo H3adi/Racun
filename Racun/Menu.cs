@@ -8,6 +8,9 @@ namespace Racun
         public Menu()
         {
             InitializeComponent();
+
+            izpisRacun.ChangeForm += () => Show();
+            izpisRacun.FormClosed += (s, args) => Close();
         }
 
         private void btnIzpis_Click(object sender, EventArgs e)
