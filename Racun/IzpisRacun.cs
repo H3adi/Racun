@@ -1,4 +1,4 @@
-﻿using Newtonsoft.Json;
+using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
@@ -17,6 +17,7 @@ namespace Racun
     {
         Root napake = new Root();
         Podatki podRacun = new Podatki();
+        public event Action ChangeForm;
         double skVredArtiklovNeto = 0.0;
         double skVredArtiklovBruto = 0.0;
         double skVredArtiklov = 0.0;
@@ -87,9 +88,9 @@ namespace Racun
 
         private void btnBack_Click(object sender, EventArgs e)
         {
-            Menu menu = new Menu();
             this.Hide();
-            menu.Show();
+            if (ChangeForm != null)
+                ChangeForm();
         }
 
         private void btnZapri_Click(object sender, EventArgs e)
